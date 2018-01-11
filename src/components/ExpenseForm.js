@@ -6,6 +6,14 @@ export default class ExpenseForm extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.onDescriptionChange = this.onDescriptionChange.bind(this);
+		this.onNoteChange = this.onNoteChange.bind(this);
+		this.onAmountChange = this.onAmountChange.bind(this);
+		this.onDateChange = this.onDateChange.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
+		this.onFocusChange = this.onFocusChange.bind(this);
+
+
 		this.state = {
 			description: props.expense ? props.expense.description : '',
 			note: props.expense ? props.expense.note : '',
@@ -16,17 +24,17 @@ export default class ExpenseForm extends React.Component {
 		};
 	}
 
-	onDescriptionChange = (e) => {
+	onDescriptionChange(e){
 		const description = e.target.value;	
 		this.setState(() => ({ description}));
 	};
 
-	onNoteChange = (e) => {
+	onNoteChange(e){
 		const note = e.target.value;
 		this.setState(() => ({ note }));
 	};
 
-	onAmountChange = (e) => {
+	onAmountChange(e){
 		const amount = e.target.value;
 
 		if (!amount || amount.match()) {
@@ -34,17 +42,17 @@ export default class ExpenseForm extends React.Component {
 		}
 	};
 
-	onDateChange = (createdAt) => {
+	onDateChange(createdAt){
 		if (createdAt) {
 			this.setState(() => ({ createdAt }));
 		}
 	};
 
-	onFocusChange = ({ focused }) => {
+	onFocusChange({ focused }){
 		this.setState(() => ({ calendarFocused: focused  }));
 	};
 
-	onSubmit = (e) => {
+	onSubmit(e){
 		e.preventDefault();
 
 		if (!this.state.description || !this.state.amount) {
@@ -103,5 +111,5 @@ export default class ExpenseForm extends React.Component {
 		)
 
 	}
-
+};
 	

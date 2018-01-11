@@ -4,15 +4,22 @@ import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
-	onSubmit = (expense) => {
+	constructor(){
+		// super is not needed
+		this.onSubmit = this.onSubmit.bind(this);
+		this.onRemove = this.onRemove.bind(this);
+	}
+
+	onSubmit(expense){
 		this.props.startEditExpense(this.props.expense.id, expense);
 		this.props.history.push('/');
 	};
 
-	onRemove = () => {
+	onRemove(expense){
 		this.props.startRemoveExpense({ id: this.props.expense.id });
 		this.props.history.push('/');
 	};
+	
 	render() {
 		return (
 			<div>

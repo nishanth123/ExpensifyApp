@@ -21,7 +21,7 @@ export const startAddExpense = (expenseData = {}) => {
 		return database.ref('users/${uid}/expenses').push(expense).then((ref) => {
 			dispatch(addExpense({
 				id: ref.key,
-				...expense
+				// ...expense
 			}));
 		});
 		};
@@ -73,7 +73,7 @@ export const startSetExpenses = () => {
 			snapshot.forEach((childSnapshot) => {
 				expenses.push({
 					id: childSnapshot.key,
-					...childSnapshot.val()
+					...childSnapshot.val
 				});
 			});
 
@@ -81,10 +81,7 @@ export const startSetExpenses = () => {
 		});
 	};
 };
-		
 
-	};
-};
 
 
 
